@@ -5,11 +5,26 @@
 
 // Desktops and Laptops
 @include mediaLg {
+    .bg-img {
+        background-image: url('./../img/background-medium.jpg') !important;
+    }
 
+    #landing {
+        left: 0;
+    }
 }
 
 // Tablets and Small Laptops
 @include mediaMd {
+
+    .bg-img {
+        background-image: url('./../img/background-small.jpg') !important;
+    }
+
+    #landing {
+        left: 0;
+        top: 5vh;
+    }
 
     ul.menu-nav, div.menu-branding {
         float: none;
@@ -43,5 +58,9 @@
 
 // Smartphones 
 @include mediaSm {
-
+    #landing {
+        left: 0;
+        top: 15vh;
+    }
+    
 }

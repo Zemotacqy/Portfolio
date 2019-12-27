@@ -1,6 +1,13 @@
 $dark-blue: #011627;
 $light-gray: #d3d3d3;
 $black: #0c0909;
+$gray: #a0a0a0;
+
+$background-image: url('../img/background.jpg');
+$background-opacity: 0.75;
+$difference: 1vh;
+
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300i&display=swap');
 
 @mixin easeOut {
     transition: all 0.5s ease-out;
@@ -11,6 +18,24 @@ $black: #0c0909;
         @return #000;
     } @else {
         @return #fff;
+    }
+}
+ 
+@mixin background {
+    &.bg-img {
+        background-image: $background-image;
+        background-attachment: fixed;
+        background-size: cover;
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba($black, $background-opacity);
+            z-index: -1; 
+        }
     }
 }
 

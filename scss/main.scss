@@ -1,10 +1,14 @@
 @import 'config';
 @import 'menu';
 
+* { 
+    box-sizing: border-box;
+}
+
 body {
+    @include background;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     width: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5;
@@ -18,7 +22,7 @@ h1, h2, h3 {
     font-weight: 400;
 
     &.lg-heading {
-        font-size: 6rem;
+        font-size: 4rem;
     }
 }
 
@@ -28,8 +32,147 @@ a {
 
 header {
     position: fixed;
-    z-index: 2;
+    z-index: 3;
     width: 100%;
+}
+
+// Icons 
+
+#landing {
+    position: absolute;
+    top: 0;
+    left: -20vw;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    color: $gray;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+
+    .intro-text {
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 3rem;
+    }
+
+    .intro-name {
+        font-weight: 500;
+    }
+
+    /*
+    
+    * {
+        position: relative;
+    }
+
+    .fa-laptop {
+        top: 15vh;
+        left: 6vw;
+        animation: MoveUpDown-laptop 2s ease-in-out infinite 900ms forwards;
+
+        @keyframes MoveUpDown-laptop {
+            0%, 100% {
+                top: 15vh;
+            }
+            50% {
+                top: (15vh - $difference);
+            }
+        }
+    }
+
+    .fa-node {
+        top: 10vh;
+        left: 18vw;
+        animation: MoveUpDown-node 1.5s ease-in-out infinite 600ms forwards;
+
+        @keyframes MoveUpDown-node {
+            0%, 100% {
+                top: 10vh;
+            }
+            50% {
+                top: (10vh - $difference);
+            }
+        }
+    }
+
+    .fa-python {
+        top: 45vh;
+        left: 10vw;
+        animation: MoveUpDown-python 1.5s ease-in-out infinite 400ms forwards;
+
+        @keyframes MoveUpDown-python {
+            0%, 100% {
+                top: 45vh;
+            }
+            50% {
+                top: (45vh - $difference);
+            }
+        }
+    }
+
+    .fa-java {
+        top: 25vh;
+        left: 30vw;
+        animation: MoveUpDown-java 1.5s ease-in-out infinite 100ms forwards;
+        
+        @keyframes MoveUpDown-java {
+            0%, 100% {
+                top: 25vh;
+            }
+            50% {
+                top: (25vh - $difference);
+            }
+        }
+    }
+
+    .fa-book {
+        top: 80vh;
+        left: 2vw;
+        animation: MoveUpDown-book 1.5s ease-in-out infinite 600ms forwards;
+
+        @keyframes MoveUpDown-book {
+            0%, 100% {
+                top: 80vh;
+            }
+            50% {
+                top: (80vh - $difference);
+            }
+        }
+    }
+
+    .fa-android {
+        top: 60vh;
+        left: 30vw;
+        animation: MoveUpDown-android 1.5s ease-in-out infinite 300ms forwards;
+
+        @keyframes MoveUpDown-android {
+            0%, 100% {
+                top: 60vh;
+            }
+            50% {
+                top: (60vh - $difference);
+            }
+        }
+    }
+
+    .fa-glasses {
+        top: 70vh;
+        left: 80vw;
+        animation: MoveUpDown-glasses 1.5s ease-in-out infinite 500ms forwards;
+
+        @keyframes MoveUpDown-glasses {
+            0%, 100% {
+                top: 70vh;
+            }
+            50% {
+                top: (70vh - $difference);
+            }
+        }
+    }
+    */
 }
 
 @import 'mobile';
