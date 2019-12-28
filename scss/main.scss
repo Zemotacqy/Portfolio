@@ -102,6 +102,7 @@ header {
 }
 
 // About
+
 #about {
     width: 100%;
     display: grid;
@@ -128,7 +129,7 @@ header {
 
     .about-section {
         grid-area: aboutSection;
-        margin-top: 20vh;
+        margin-top: 8vh;
         height: 135vh;
 
         p {

@@ -192,13 +192,13 @@ header {
     position: relative;
     top: 0;
     left: 0;
-    background: url("../img/about-image2.jpeg");
+    background: url("../img/about-image.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 135vh; }
   #about .about-section {
     grid-area: aboutSection;
-    margin-top: 20vh;
+    margin-top: 8vh;
     height: 135vh; }
     #about .about-section p {
       padding: 2rem 5rem 1rem 1rem;
@@ -215,7 +215,7 @@ header {
 
 @media screen and (min-width: 769px) and (max-width: 1170px) {
   .about-img {
-    background: url("../img/about-image1.jpeg") !important;
+    background: url("../img/about-image-medium.jpeg") !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
     height: 160vh !important; }
@@ -268,7 +268,7 @@ header {
       position: relative;
       top: 0;
       left: 0;
-      background: url("../img/about-image3.jpeg");
+      background: url("../img/about-image-small.jpeg");
       background-size: cover;
       background-repeat: no-repeat;
       height: 50vh; }
