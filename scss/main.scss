@@ -24,6 +24,10 @@ h1, h2, h3 {
     &.lg-heading {
         font-size: 4rem;
     }
+
+    &.page-heading {
+        font-size: 3rem;
+    }
 }
 
 a {
@@ -61,6 +65,89 @@ header {
     .intro-name {
         font-weight: 500;
     }
+}
+
+.page-heading {
+    text-align: center;
+    z-index: 1;
+    visibility: visible;
+    position: absolute;
+    margin-right: -50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    .heading-text {
+        font-size: 4rem;
+        text-decoration: none;
+        position: relative;
+        color: #000;
+        font-weight: 400;
+    }
+
+    .heading-text::after {
+        content: '';
+        width: 0%;
+        height: 7px;
+        background-color: lighten($dark-blue, 30);
+        position: absolute;
+        bottom: 0%;left: 50%;
+        border-radius: 10px;
+        transition: all 500ms ease;
+    }
+
+    .heading-text:hover::after {
+        left: 0%;
+        width: 100%;
+    }
+}
+
+// About
+#about {
+    width: 100%;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas: 
+    'aboutImage aboutSection aboutSection';
+    grid-template-columns: repeat(3, 1fr);
+    overflow-x: hidden;
+
+    .page-heading-small {
+        visibility: hidden;
+    }
+
+    .about-img {
+        grid-area: aboutImage;
+        position: relative;
+        top: 0;
+        left: 0;
+        background: $about-image;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 135vh;
+    }
+
+    .about-section {
+        grid-area: aboutSection;
+        margin-top: 20vh;
+        height: 135vh;
+
+        p {
+            padding: 2rem 5rem 1rem 1rem;
+            text-align: justify;
+            font-size: 1.3rem;
+        }
+    }
+}
+
+// Footer
+
+.main-footer {
+    text-align: center;
+    padding: 1rem;
+    background: darken($color: $black, $amount: 10);
+    color: #fff;
+    height: 60px;
+    margin-top: 5vh;
 }
 
 @import 'mobile';

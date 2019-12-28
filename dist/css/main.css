@@ -119,6 +119,8 @@ h1, h2, h3 {
   font-weight: 400; }
   h1.lg-heading, h2.lg-heading, h3.lg-heading {
     font-size: 4rem; }
+  h1.page-heading, h2.page-heading, h3.page-heading {
+    font-size: 3rem; }
 
 a {
   text-decoration: none; }
@@ -141,131 +143,143 @@ header {
   text-align: center;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  /*
-    
-    * {
-        position: relative;
-    }
-
-    .fa-laptop {
-        top: 15vh;
-        left: 6vw;
-        animation: MoveUpDown-laptop 2s ease-in-out infinite 900ms forwards;
-
-        @keyframes MoveUpDown-laptop {
-            0%, 100% {
-                top: 15vh;
-            }
-            50% {
-                top: (15vh - $difference);
-            }
-        }
-    }
-
-    .fa-node {
-        top: 10vh;
-        left: 18vw;
-        animation: MoveUpDown-node 1.5s ease-in-out infinite 600ms forwards;
-
-        @keyframes MoveUpDown-node {
-            0%, 100% {
-                top: 10vh;
-            }
-            50% {
-                top: (10vh - $difference);
-            }
-        }
-    }
-
-    .fa-python {
-        top: 45vh;
-        left: 10vw;
-        animation: MoveUpDown-python 1.5s ease-in-out infinite 400ms forwards;
-
-        @keyframes MoveUpDown-python {
-            0%, 100% {
-                top: 45vh;
-            }
-            50% {
-                top: (45vh - $difference);
-            }
-        }
-    }
-
-    .fa-java {
-        top: 25vh;
-        left: 30vw;
-        animation: MoveUpDown-java 1.5s ease-in-out infinite 100ms forwards;
-        
-        @keyframes MoveUpDown-java {
-            0%, 100% {
-                top: 25vh;
-            }
-            50% {
-                top: (25vh - $difference);
-            }
-        }
-    }
-
-    .fa-book {
-        top: 80vh;
-        left: 2vw;
-        animation: MoveUpDown-book 1.5s ease-in-out infinite 600ms forwards;
-
-        @keyframes MoveUpDown-book {
-            0%, 100% {
-                top: 80vh;
-            }
-            50% {
-                top: (80vh - $difference);
-            }
-        }
-    }
-
-    .fa-android {
-        top: 60vh;
-        left: 30vw;
-        animation: MoveUpDown-android 1.5s ease-in-out infinite 300ms forwards;
-
-        @keyframes MoveUpDown-android {
-            0%, 100% {
-                top: 60vh;
-            }
-            50% {
-                top: (60vh - $difference);
-            }
-        }
-    }
-
-    .fa-glasses {
-        top: 70vh;
-        left: 80vw;
-        animation: MoveUpDown-glasses 1.5s ease-in-out infinite 500ms forwards;
-
-        @keyframes MoveUpDown-glasses {
-            0%, 100% {
-                top: 70vh;
-            }
-            50% {
-                top: (70vh - $difference);
-            }
-        }
-    }
-    */ }
+  color: #fff; }
   #landing .intro-text {
     font-family: 'Ubuntu', sans-serif;
     font-size: 3rem; }
   #landing .intro-name {
     font-weight: 500; }
 
+.page-heading {
+  text-align: center;
+  z-index: 1;
+  visibility: visible;
+  position: absolute;
+  margin-right: -50%;
+  left: 50%;
+  transform: translate(-50%, 0); }
+  .page-heading .heading-text {
+    font-size: 4rem;
+    text-decoration: none;
+    position: relative;
+    color: #000;
+    font-weight: 400; }
+  .page-heading .heading-text::after {
+    content: '';
+    width: 0%;
+    height: 7px;
+    background-color: #056abc;
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    border-radius: 10px;
+    transition: all 500ms ease; }
+  .page-heading .heading-text:hover::after {
+    left: 0%;
+    width: 100%; }
+
+#about {
+  width: 100%;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-areas: 'aboutImage aboutSection aboutSection';
+  grid-template-columns: repeat(3, 1fr);
+  overflow-x: hidden; }
+  #about .page-heading-small {
+    visibility: hidden; }
+  #about .about-img {
+    grid-area: aboutImage;
+    position: relative;
+    top: 0;
+    left: 0;
+    background: url("../img/about-image2.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 135vh; }
+  #about .about-section {
+    grid-area: aboutSection;
+    margin-top: 20vh;
+    height: 135vh; }
+    #about .about-section p {
+      padding: 2rem 5rem 1rem 1rem;
+      text-align: justify;
+      font-size: 1.3rem; }
+
+.main-footer {
+  text-align: center;
+  padding: 1rem;
+  background: black;
+  color: #fff;
+  height: 60px;
+  margin-top: 5vh; }
+
 @media screen and (min-width: 769px) and (max-width: 1170px) {
+  .about-img {
+    background: url("../img/about-image1.jpeg") !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    height: 160vh !important; }
+  .about-section {
+    height: 160vh !important; }
   .bg-img {
     background-image: url("./../img/background-medium.jpg") !important; }
   #landing {
     left: 0; } }
 
 @media screen and (max-width: 768px) {
+  #about {
+    width: 100%;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas: 'aboutImage' 'aboutSection' 'aboutSection';
+    grid-template-columns: 1fr;
+    overflow-x: hidden; }
+    #about .page-heading {
+      visibility: hidden; }
+    #about .page-heading-small {
+      text-align: center;
+      z-index: 1;
+      visibility: visible;
+      position: relative;
+      margin-right: -50%;
+      left: 50%;
+      transform: translate(-50%, 0); }
+      #about .page-heading-small .heading-text-small {
+        font-size: 4rem;
+        text-decoration: none;
+        position: relative;
+        color: #000;
+        font-weight: 400; }
+      #about .page-heading-small .heading-text-small::after {
+        content: '';
+        width: 0%;
+        height: 7px;
+        background-color: #056abc;
+        position: absolute;
+        bottom: 0%;
+        left: 50%;
+        border-radius: 10px;
+        transition: all 500ms ease; }
+      #about .page-heading-small .heading-text-small:hover::after {
+        left: 0%;
+        width: 100%; }
+    #about .about-img {
+      grid-area: aboutImage;
+      position: relative;
+      top: 0;
+      left: 0;
+      background: url("../img/about-image3.jpeg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 50vh; }
+    #about .about-section {
+      grid-area: aboutSection;
+      margin-top: 5vh;
+      height: 100vh; }
+      #about .about-section p {
+        padding: 1rem 2rem 1rem 2rem;
+        text-align: justify;
+        font-size: 1.3rem; }
   .bg-img {
     background-image: url("./../img/background-small.jpg") !important; }
   #landing {
