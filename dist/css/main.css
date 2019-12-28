@@ -205,6 +205,69 @@ header {
       text-align: justify;
       font-size: 1.3rem; }
 
+#work {
+  width: 100%;
+  overflow-x: hidden; }
+  #work .card-container {
+    padding: 25vh 15vw 5vh 15vw; }
+  #work .card {
+    background: #fff;
+    border-radius: 20px;
+    margin-bottom: 4rem;
+    padding: 3rem 4rem;
+    box-shadow: 0 1.4rem 0.8rem rgba(0, 0, 0, 0.2);
+    transition: all 200ms ease;
+    min-width: 50vw;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-areas: 'cardImage cardInfo cardInfo';
+    grid-template-columns: repeat(3, 1fr);
+    overflow-x: hidden; }
+    #work .card .card-image {
+      grid-area: cardImage;
+      min-width: 50%;
+      max-width: 100%;
+      height: auto;
+      position: relative; }
+      #work .card .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        border-radius: 0.8rem; }
+    #work .card .card-info {
+      grid-area: cardInfo;
+      line-height: 1.2rem; }
+      #work .card .card-info .card-title {
+        font-size: 2rem;
+        padding-bottom: 1rem; }
+      #work .card .card-info .card-text {
+        text-align: justify;
+        font-size: 1.2rem; }
+      #work .card .card-info .buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row wrap; }
+        #work .card .card-info .buttons .btn {
+          background: linear-gradient(90deg, #be2edd, #5f27cd);
+          color: #fff;
+          font-size: 16px;
+          padding: 15px 45px;
+          border: none;
+          border-radius: 25px;
+          outline: none;
+          cursor: pointer;
+          margin: 0.5rem 0.5rem; }
+        #work .card .card-info .buttons .btn:hover {
+          background: linear-gradient(90deg, #be2edd, #5f27cd);
+          transform: scale(1.01);
+          opacity: 0.9;
+          transition: all 1s ease; }
+  #work .card:hover {
+    transform: scale(1.01);
+    transition: all 200ms ease; }
+
 .main-footer {
   text-align: center;
   padding: 1rem;
@@ -302,7 +365,13 @@ header {
     .menu-branding .potrait {
       background: url("./../img/portrait_small.jpg");
       width: 150px;
-      height: 150px; } }
+      height: 150px; }
+  .card {
+    grid-template-areas: 'cardImage' 'cardInfo' !important;
+    grid-template-columns: 1fr !important;
+    overflow-x: hidden; }
+    .card .card-title, .card .card-time {
+      text-align: center; } }
 
 @media screen and (max-width: 500px) {
   #landing {

@@ -139,6 +139,18 @@
         }
     }
 
+    .card {
+        grid-template-areas: 
+        'cardImage'
+        'cardInfo' !important;
+        grid-template-columns: 1fr !important;
+        overflow-x: hidden;
+
+        .card-title, .card-time {
+            text-align: center;
+        }
+    }
+
 }
 
 // Smartphones 
