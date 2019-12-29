@@ -12,6 +12,11 @@
 </head>
 
 <body>
+    <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
     <div class="overlay"></div>
     <header>
         <div class="menu-btn">
@@ -100,6 +105,20 @@
         Copyright &copy; 2019
     </footer>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <script>
+        // Preloader
+        $(window).load(function() {
+            $(".loader").fadeOut("slow");
+            $(".loader").css("display", "none");
+                    
+            $(".overlay").css("display", "block");
+            $("section").css("display", "block");
+            $("header").css("display", "block");
+            $("footer").css("display", "block");
+        });
+    </script>
     <script src="js/main.js"></script>
 </body>
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
+    <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
     <div class="overlay"></div>
     <header>
         <div class="menu-btn">
@@ -22,7 +29,7 @@
             <div class="menu-branding">
                 <div class="potrait"></div>
             </div>
- 
+
             <ul class="menu-nav">
                 <li class="nav-item">
                     <a href="index.html" class="nav-link">Home</a>
@@ -58,11 +65,15 @@
                         <span><small>2019</small></span>
                     </div>
                     <div class="card-text">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis recusandae corrupti commodi quis praesentium maxime minus, eius doloribus quisquam rem ad similique libero laudantium doloremque. Natus, laborum itaque ratione non numquam blanditiis dicta possimus ullam officiis fuga accusantium voluptatibus consequatur eaque. Mollitia non corrupti eum labore provident adipisci nam hic?</p>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis recusandae corrupti
+                            commodi quis praesentium maxime minus, eius doloribus quisquam rem ad similique libero
+                            laudantium doloremque. Natus, laborum itaque ratione non numquam blanditiis dicta possimus
+                            ullam officiis fuga accusantium voluptatibus consequatur eaque. Mollitia non corrupti eum
+                            labore provident adipisci nam hic?</p>
                     </div>
                     <div class="buttons">
-                        <button type="button" class="btn">Button</button>
-                        <button type="button" class="btn">Button</button>
+                        <button type="button" class="btn btn-github"><i class="fab fa-github"></i> GitHub</button>
+                        <button type="button" class="btn btn-preview"><i class="fas fa-eye"></i> Preview</button>
                     </div>
                 </div>
             </div>
@@ -78,7 +89,11 @@
                         <span><small>2019</small></span>
                     </div>
                     <div class="card-text">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis recusandae corrupti commodi quis praesentium maxime minus, eius doloribus quisquam rem ad similique libero laudantium doloremque. Natus, laborum itaque ratione non numquam blanditiis dicta possimus ullam officiis fuga accusantium voluptatibus consequatur eaque. Mollitia non corrupti eum labore provident adipisci nam hic?</p>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis recusandae corrupti
+                            commodi quis praesentium maxime minus, eius doloribus quisquam rem ad similique libero
+                            laudantium doloremque. Natus, laborum itaque ratione non numquam blanditiis dicta possimus
+                            ullam officiis fuga accusantium voluptatibus consequatur eaque. Mollitia non corrupti eum
+                            labore provident adipisci nam hic?</p>
                     </div>
                     <div class="buttons">
                         <button type="button" class="btn">Button</button>
@@ -93,7 +108,22 @@
     <footer class="main-footer">
         Copyright &copy; 2019
     </footer>
-    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <script>
+        // Preloader
+        $(window).load(function() {
+            $(".loader").fadeOut("slow");
+            $(".loader").css("display", "none");
+                    
+            $(".overlay").css("display", "block");
+            $("section").css("display", "block");
+            $("header").css("display", "block");
+            $("footer").css("display", "block");
+        });
+    </script>
     <script src="js/main.js"></script>
 </body>
+
 </html>

@@ -118,12 +118,18 @@ body {
       background: rgba(12, 9, 9, 0.75);
       z-index: -1; }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin: 0;
   font-weight: 400; }
-  h1.lg-heading, h2.lg-heading, h3.lg-heading {
+  h1.lg-heading,
+  h2.lg-heading,
+  h3.lg-heading {
     font-size: 4rem; }
-  h1.page-heading, h2.page-heading, h3.page-heading {
+  h1.page-heading,
+  h2.page-heading,
+  h3.page-heading {
     font-size: 3rem; }
 
 a {
@@ -258,20 +264,22 @@ header {
         justify-content: center;
         flex-direction: row wrap; }
         #work .card .card-info .buttons .btn {
-          background: linear-gradient(90deg, #be2edd, #5f27cd);
           color: #fff;
-          font-size: 16px;
-          padding: 15px 45px;
+          font-size: 20px;
+          padding: 10px 45px;
           border: none;
           border-radius: 25px;
           outline: none;
           cursor: pointer;
           margin: 0.5rem 0.5rem; }
         #work .card .card-info .buttons .btn:hover {
-          background: linear-gradient(90deg, #be2edd, #5f27cd);
           transform: scale(1.01);
           opacity: 0.9;
           transition: all 1s ease; }
+        #work .card .card-info .buttons .btn-github {
+          background: #000; }
+        #work .card .card-info .buttons .btn-preview {
+          background: #56AF50; }
   #work .card:hover {
     transform: scale(1.01);
     backface-visibility: hidden;
@@ -368,6 +376,43 @@ header {
   background-color: #888;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5); }
 
+header,
+.overlay,
+section,
+footer {
+  display: none; }
+
+.loader {
+  margin-top: calc(50vh - 5rem);
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.loader > span {
+  background: #000;
+  border-radius: 50%;
+  margin: 5rem 0.5rem;
+  animation: bouncingLoader 0.8s infinite alternate; }
+
+.loader > span:nth-child(2) {
+  animation-delay: 0.2s; }
+
+.loader > span:nth-child(3) {
+  animation-delay: 0.4s; }
+
+/* Define the animation called bouncingLoader. */
+@keyframes bouncingLoader {
+  from {
+    width: 0.1rem;
+    height: 0.1rem;
+    opacity: 1;
+    transform: translate3d(0); }
+  to {
+    width: 1rem;
+    height: 1rem;
+    opacity: 0.1;
+    transform: translate3d(0, -1rem, 0); } }
+
 @media screen and (min-width: 769px) and (max-width: 1170px) {
   .about-img {
     background: url("../img/about-image-medium.jpeg") !important;
@@ -458,14 +503,19 @@ header {
       background: url("./../img/portrait_small.jpg");
       width: 150px;
       height: 150px; }
-  .card {
-    grid-template-areas: 'cardImage' 'cardInfo' !important;
-    grid-template-columns: 1fr !important;
-    overflow-x: hidden; }
-    .card .card-title, .card .card-time {
-      text-align: center; } }
+  .card-container {
+    padding: 25vh 5vw 10vh 5vw !important; }
+    .card-container .card {
+      grid-template-areas: 'cardImage' 'cardInfo' !important;
+      grid-template-columns: 1fr !important;
+      overflow-x: hidden;
+      padding: 1rem 1rem !important; }
+      .card-container .card .card-title, .card-container .card .card-time {
+        text-align: center; } }
 
 @media screen and (max-width: 500px) {
+  #work {
+    overflow-x: scroll; }
   #landing {
     left: 0;
     top: 15vh; } }

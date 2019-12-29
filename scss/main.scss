@@ -1,7 +1,7 @@
 @import 'config';
 @import 'menu';
 
-* { 
+* {
     box-sizing: border-box;
 }
 
@@ -17,7 +17,9 @@ body {
 
 // Headings
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     margin: 0;
     font-weight: 400;
 
@@ -91,7 +93,8 @@ header {
         z-index: -1;
         background-color: lighten($dark-blue, 30);
         position: absolute;
-        bottom: 0%;left: 50%;
+        bottom: 0%;
+        left: 50%;
         border-radius: 10px;
         transition: all 500ms ease;
     }
@@ -109,8 +112,8 @@ header {
     width: 100%;
     display: grid;
     grid-gap: 20px;
-    grid-template-areas: 
-    'aboutImage aboutSection aboutSection';
+    grid-template-areas:
+        'aboutImage aboutSection aboutSection';
     grid-template-columns: repeat(3, 1fr);
     overflow-x: hidden;
 
@@ -157,13 +160,13 @@ header {
         border-radius: 20px;
         margin-bottom: 4rem;
         padding: 3rem 4rem;
-        box-shadow: 0 1.4rem 0.8rem rgba(0,0,0,0.2); 
+        box-shadow: 0 1.4rem 0.8rem rgba(0, 0, 0, 0.2);
         transition: all 200ms ease;
         min-width: 50vw;
         display: grid;
         grid-gap: 1rem;
-        grid-template-areas: 
-        'cardImage cardInfo cardInfo';
+        grid-template-areas:
+            'cardImage cardInfo cardInfo';
         grid-template-columns: repeat(3, 1fr);
         overflow-x: hidden;
         -webkit-perspective: 1;
@@ -199,7 +202,7 @@ header {
                 text-align: justify;
                 font-size: 1.2rem;
             }
-            
+
             .buttons {
                 display: flex;
                 align-items: center;
@@ -207,10 +210,9 @@ header {
                 flex-direction: row wrap;
 
                 .btn {
-                    background: linear-gradient(90deg, #be2edd, #5f27cd);
                     color: #fff;
-                    font-size: 16px;
-                    padding: 15px 45px;
+                    font-size: 20px;
+                    padding: 10px 45px;
                     border: none;
                     border-radius: 25px;
                     outline: none;
@@ -219,14 +221,21 @@ header {
                 }
 
                 .btn:hover {
-                    background: linear-gradient(90deg, #be2edd, #5f27cd);
                     transform: scale(1.01);
                     opacity: 0.9;
                     transition: all 1s ease;
                 }
+
+                .btn-github {
+                    background: #000;
+                }
+
+                .btn-preview {
+                    background: #56AF50;
+                }
             }
 
-            
+
         }
     }
 
@@ -245,7 +254,7 @@ header {
     max-width: 38rem;
     margin: 0 auto;
     padding: 2rem;
-    min-height: calc(100vh - 60px - 5vh);  
+    min-height: calc(100vh - 60px - 5vh);
 
     .index {
         margin-top: 22vh;
@@ -356,15 +365,65 @@ header {
 ::-webkit-scrollbar {
     width: 12px;
 }
- 
+
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
 }
- 
+
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #888;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
+
+// Loader
+
+header,
+.overlay,
+section,
+footer {
+    display: none;
+}
+
+.loader {
+    margin-top: calc(50vh - 5rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader>span {
+    background: #000;
+    border-radius: 50%;
+    margin: 5rem 0.5rem;
+    animation: bouncingLoader 0.8s infinite alternate;
+}
+
+.loader>span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loader>span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Define the animation called bouncingLoader. */
+@keyframes bouncingLoader {
+    from {
+        width: 0.1rem;
+        height: 0.1rem;
+        opacity: 1;
+        transform: translate3d(0);
+    }
+
+    to {
+        width: 1rem;
+        height: 1rem;
+        opacity: 0.1;
+        transform: translate3d(0, -1rem, 0);
+    }
+}
+
+
 @import 'mobile';

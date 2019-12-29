@@ -139,22 +139,32 @@
         }
     }
 
-    .card {
-        grid-template-areas: 
-        'cardImage'
-        'cardInfo' !important;
-        grid-template-columns: 1fr !important;
-        overflow-x: hidden;
+    .card-container {
+        padding: 25vh 5vw 10vh 5vw !important;
 
-        .card-title, .card-time {
-            text-align: center;
+        .card {
+            grid-template-areas: 
+            'cardImage'
+            'cardInfo' !important;
+            grid-template-columns: 1fr !important;
+            overflow-x: hidden;
+            padding: 1rem 1rem !important;
+    
+            .card-title, .card-time {
+                text-align: center;
+            }
         }
     }
+    
 
 }
 
 // Smartphones 
 @include mediaSm {
+    #work {
+        overflow-x: scroll;
+    }
+
     #landing {
         left: 0;
         top: 15vh;
