@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu:300i&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Arvo&display=swap");
 .menu-btn {
   position: absolute;
   z-index: 3;
@@ -91,6 +92,9 @@
 .nav-item:nth-child(4) {
   transition-delay: 0.4s; }
 
+.nav-item:nth-child(5) {
+  transition-delay: 0.5s; }
+
 * {
   box-sizing: border-box; }
 
@@ -168,6 +172,7 @@ header {
     content: '';
     width: 0%;
     height: 7px;
+    z-index: -1;
     background-color: #056abc;
     position: absolute;
     bottom: 0%;
@@ -176,7 +181,8 @@ header {
     transition: all 500ms ease; }
   .page-heading .heading-text:hover::after {
     left: 0%;
-    width: 100%; }
+    width: 100%;
+    z-index: -1; }
 
 #about {
   width: 100%;
@@ -222,7 +228,9 @@ header {
     grid-gap: 1rem;
     grid-template-areas: 'cardImage cardInfo cardInfo';
     grid-template-columns: repeat(3, 1fr);
-    overflow-x: hidden; }
+    overflow-x: hidden;
+    -webkit-perspective: 1;
+    perspective: 1; }
     #work .card .card-image {
       grid-area: cardImage;
       min-width: 50%;
@@ -266,7 +274,79 @@ header {
           transition: all 1s ease; }
   #work .card:hover {
     transform: scale(1.01);
+    backface-visibility: hidden;
     transition: all 200ms ease; }
+
+#blog {
+  width: 100%;
+  overflow-x: hidden;
+  max-width: 38rem;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: calc(100vh - 60px - 5vh); }
+  #blog .index {
+    margin-top: 22vh;
+    font-family: 'Arvo', serif; }
+    #blog .index .year {
+      font-weight: 800;
+      font-size: 3rem;
+      text-align: left; }
+    #blog .index .entry {
+      width: 100%;
+      padding: 0.5rem 0;
+      font-size: 1.125rem;
+      line-height: 1.6rem;
+      display: flex;
+      text-align: left;
+      justify-content: space-between;
+      flex-direction: row wrap; }
+      #blog .index .entry .what {
+        max-width: 75%;
+        text-decoration: underline;
+        text-underline-position: under; }
+      #blog .index .entry .what:hover {
+        opacity: 0.8;
+        cursor: pointer;
+        text-decoration: underline;
+        text-underline-position: under; }
+    #blog .index .line-seperator {
+      margin: 3rem 0; }
+
+#blog-post {
+  width: 100%;
+  overflow-x: hidden;
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: calc(100vh - 60px - 5vh); }
+  #blog-post .post-container {
+    margin-top: 1vh;
+    font-family: 'Arvo', serif; }
+    #blog-post .post-container .back-btn {
+      padding-bottom: 1px;
+      border-bottom: 0.5px solid black;
+      font-size: 1.2rem; }
+      #blog-post .post-container .back-btn a {
+        text-decoration: none;
+        color: #000; }
+    #blog-post .post-container .back-btn:hover {
+      opacity: 0.8;
+      cursor: pointer; }
+    #blog-post .post-container .post-title {
+      font-weight: bold;
+      font-size: 2rem;
+      line-height: 1.6rem;
+      letter-spacing: 0.05em;
+      margin: 5rem 0 1rem 0;
+      text-align: center; }
+    #blog-post .post-container .post-date {
+      text-align: right; }
+    #blog-post .post-container .post-content {
+      width: 100%;
+      margin-top: 10vh;
+      text-align: justify;
+      line-height: 2rem;
+      font-size: 1.1rem; }
 
 .main-footer {
   text-align: center;
@@ -275,6 +355,18 @@ header {
   color: #fff;
   height: 60px;
   margin-top: 5vh; }
+
+::-webkit-scrollbar {
+  width: 12px; }
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px; }
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #888;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5); }
 
 @media screen and (min-width: 769px) and (max-width: 1170px) {
   .about-img {

@@ -4,6 +4,7 @@ const menu = document.querySelector('.menu');
 const menuNav = document.querySelector('.menu-nav');
 const menuBranding = document.querySelector('.menu-branding');
 const navItems = document.querySelectorAll('.nav-item');
+const Body = document.getElementsByTagName("body")[0];
 
 // Set the initial state of Menu
 let showMenu = false;
@@ -19,6 +20,7 @@ function toggleMenu() {
         navItems.forEach( item => {
             item.classList.add('show');
         });
+        Body.style.overflow = "hidden";
 
         // Set Menu State
         showMenu = true;
@@ -30,7 +32,8 @@ function toggleMenu() {
         navItems.forEach( item => {
             item.classList.remove('show');
         });
-
+        Body.style.overflow = "scroll";
+        
         // Set Menu State
         showMenu = false;
     }
