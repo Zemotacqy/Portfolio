@@ -92,7 +92,7 @@
         .about-section {
             grid-area: aboutSection;
             margin-top: 5vh;
-            height: 100vh;
+            min-height: 100vh;
     
             p {
                 padding: 1rem 2rem 1rem 2rem;
@@ -104,6 +104,8 @@
 
     .bg-img {
         background-image: url('./../img/background-small.jpg') !important;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     #landing {

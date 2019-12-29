@@ -28,6 +28,7 @@ $difference: 1vh;
         background-image: $background-image;
         background-attachment: fixed;
         background-size: cover;
+        background-repeat: no-repeat;
 
         .overlay {
             position: absolute;

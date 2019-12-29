@@ -108,7 +108,8 @@ body {
   body.bg-img {
     background-image: url("../img/background.jpg");
     background-attachment: fixed;
-    background-size: cover; }
+    background-size: cover;
+    background-repeat: no-repeat; }
     body.bg-img .overlay {
       position: absolute;
       top: 0;
@@ -192,7 +193,6 @@ header {
 
 #about {
   width: 100%;
-  display: grid;
   grid-gap: 20px;
   grid-template-areas: 'aboutImage aboutSection aboutSection';
   grid-template-columns: repeat(3, 1fr);
@@ -211,7 +211,7 @@ header {
   #about .about-section {
     grid-area: aboutSection;
     margin-top: 8vh;
-    height: 135vh; }
+    min-height: 135vh; }
     #about .about-section p {
       padding: 2rem 5rem 1rem 1rem;
       text-align: justify;
@@ -486,13 +486,15 @@ footer {
     #about .about-section {
       grid-area: aboutSection;
       margin-top: 5vh;
-      height: 100vh; }
+      min-height: 100vh; }
       #about .about-section p {
         padding: 1rem 2rem 1rem 2rem;
         text-align: justify;
         font-size: 1.3rem; }
   .bg-img {
-    background-image: url("./../img/background-small.jpg") !important; }
+    background-image: url("./../img/background-small.jpg") !important;
+    background-repeat: no-repeat;
+    background-size: cover; }
   #landing {
     left: 0;
     top: 5vh; }
