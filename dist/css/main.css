@@ -356,6 +356,17 @@ header {
       line-height: 2rem;
       font-size: 1.1rem; }
 
+#not-found {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 60px - 5vh);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; }
+  #not-found .lost-text {
+    font-weight: 400;
+    font-size: 3rem; }
+
 .main-footer {
   text-align: center;
   padding: 1rem;
