@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Manish Ranjan | Portfolio</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="overlay"></div>
+    <header>
+        <div class="menu-btn">
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+        </div>
+
+        <nav class="menu">
+            <div class="menu-branding">
+                <div class="potrait"></div>
+            </div>
+
+            <ul class="menu-nav">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item current">
+                    <a href="#" class="nav-link">About me</a>
+                </li>
+                <li class="nav-item">
+                    <a href="work.html" class="nav-link">Work</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html" class="nav-link">Blog</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <div class="page-heading">
+            <a href="#" class="heading-text">About Me</a>
+        </div>
+
+        <div class="about-img"></div>
+        <div class="about-section">
+            <div class="page-heading-small">
+                <a href="#" class="heading-text-small">About Me</a>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, minima numquam facere, vitae voluptas
+                accusamus aspernatur aliquid vero est iusto ipsum cum. Obcaecati odio nemo inventore officiis.
+                Dignissimos corporis cumque quasi dolores maxime ipsa sed laborum animi vero a, vel possimus eius nam
+                dolorum voluptas ab explicabo amet facere quas.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda harum explicabo architecto repudiandae
+                nisi tempore dolor facilis odio est, nostrum voluptates quibusdam perspiciatis, voluptatem quod debitis
+                dignissimos! Fugiat laboriosam excepturi at omnis sapiente veritatis libero hic? Nihil iste ut
+                voluptatum porro quas consectetur saepe vero! Maxime quis deleniti nesciunt neque consequatur ea quo
+                temporibus nemo exercitationem provident, voluptatum voluptate beatae sequi officia rem ratione,
+                necessitatibus dolore. Odio laboriosam laborum sapiente assumenda nam, quia dolore explicabo,
+                exercitationem, beatae quos consequatur ullam laudantium praesentium impedit incidunt minus in
+                provident? Placeat ipsam ad enim! Illo debitis quas accusantium? Earum cupiditate debitis doloremque
+                magnam.</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed commodi, officia perspiciatis nisi odit
+                magni ratione. Hic impedit doloribus quaerat est fugit ut repudiandae iure ipsa accusantium, optio, ab
+                id odio necessitatibus ducimus maiores debitis enim reprehenderit. In dolores ex veritatis! Nihil et
+                facilis doloribus maiores sit porro ex, non, laudantium officia dolorem laborum nemo alias nostrum
+                laboriosam nam numquam quia totam natus qui dolor. Minus dignissimos modi totam! Omnis laboriosam
+                consequuntur numquam. Itaque rerum ad omnis vitae unde veniam obcaecati autem veritatis dolores eligendi
+                ullam, quidem eos, ut minima. Ullam ratione inventore exercitationem veritatis fugiat, corrupti maxime
+                eaque id!</p>
+        </div>
+
+    </section>
+
+    <footer class="main-footer">
+        Copyright &copy; 2019
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <script>
+        // Preloader
+        $(window).load(function() {
+            $(".loader").fadeOut("slow");
+            $(".loader").css("display", "none");
+                    
+            $(".overlay").css("display", "block");
+            $("section").css("display", "grid");
+            $("header").css("display", "block");
+            $("footer").css("display", "block");
+        });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
