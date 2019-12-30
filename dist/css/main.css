@@ -78,6 +78,8 @@
       color: #0177B5; }
     .menu .nav-item.icons .fa-github:hover {
       opacity: 0.8; }
+    .menu .nav-item.icons .fa-envelope:hover {
+      opacity: 0.8; }
   .menu .nav-link {
     display: inline-block;
     position: relative;
