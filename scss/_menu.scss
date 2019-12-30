@@ -106,7 +106,30 @@
 
         &.current > a{
             color: $black;
+        }
 
+        &.icons {
+
+            i {
+                padding: 0 0.5rem;
+                color: #000;
+            }
+
+            i:hover {
+                cursor: pointer;
+            }
+
+            .fa-facebook:hover {
+                color: #4267B2;
+            }
+
+            .fa-linkedin:hover {
+                color: #0177B5;
+            }
+
+            .fa-github:hover {
+                opacity: 0.8;
+            }
         }
     }
 
