@@ -67,6 +67,17 @@
       transform: translate3d(0, 0, 0); }
     .menu .nav-item.current > a {
       color: #0c0909; }
+    .menu .nav-item.icons i {
+      padding: 0 0.5rem;
+      color: #000; }
+    .menu .nav-item.icons i:hover {
+      cursor: pointer; }
+    .menu .nav-item.icons .fa-facebook:hover {
+      color: #4267B2; }
+    .menu .nav-item.icons .fa-linkedin:hover {
+      color: #0177B5; }
+    .menu .nav-item.icons .fa-github:hover {
+      opacity: 0.8; }
   .menu .nav-link {
     display: inline-block;
     position: relative;
