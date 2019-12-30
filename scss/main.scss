@@ -13,6 +13,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5;
     background: $light-gray;
+    overflow-x: hidden;
 }
 
 // Headings
@@ -115,9 +116,7 @@ header {
     grid-template-areas:
         'aboutImage aboutSection aboutSection';
     grid-template-columns: repeat(3, 1fr);
-    overflow-x: hidden;
     min-height: calc(100vh - 60px - 5vh);
-    overflow: -moz-scrollbars-none;
 
     .page-heading-small {
         visibility: hidden;
@@ -138,11 +137,32 @@ header {
         grid-area: aboutSection;
         margin-top: 8vh;
         max-height: 135vh;
+        overflow: hidden;
 
         p {
             padding: 2rem 5rem 1rem 1rem;
             text-align: justify;
             font-size: 1.3rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        i {
+            margin: 0 0.5rem;
+        }
+
+        a {
+            text-decoration: underline;
+            color: #000;
+            text-underline-position: under;
+        }
+
+        a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+            text-underline-position: under;
         }
     }
 }
@@ -303,6 +323,7 @@ header {
 }
 
 // Template Post
+
 #blog-post {
     width: 100%;
     overflow-x: hidden;

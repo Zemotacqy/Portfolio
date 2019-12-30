@@ -115,7 +115,8 @@ body {
   width: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5;
-  background: #d3d3d3; }
+  background: #d3d3d3;
+  overflow-x: hidden; }
   body.bg-img {
     background-image: url("../img/background.jpg");
     background-attachment: fixed;
@@ -208,9 +209,7 @@ header {
   grid-gap: 20px;
   grid-template-areas: 'aboutImage aboutSection aboutSection';
   grid-template-columns: repeat(3, 1fr);
-  overflow-x: hidden;
-  min-height: calc(100vh - 60px - 5vh);
-  overflow: -moz-scrollbars-none; }
+  min-height: calc(100vh - 60px - 5vh); }
   #about .page-heading-small {
     visibility: hidden; }
   #about .about-img {
@@ -225,11 +224,24 @@ header {
   #about .about-section {
     grid-area: aboutSection;
     margin-top: 8vh;
-    max-height: 135vh; }
+    max-height: 135vh;
+    overflow: hidden; }
     #about .about-section p {
       padding: 2rem 5rem 1rem 1rem;
       text-align: justify;
       font-size: 1.3rem; }
+    #about .about-section .text-center {
+      text-align: center; }
+    #about .about-section i {
+      margin: 0 0.5rem; }
+    #about .about-section a {
+      text-decoration: underline;
+      color: #000;
+      text-underline-position: under; }
+    #about .about-section a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+      text-underline-position: under; }
 
 #about::-webkit-scrollbar {
   width: 0 !important; }
