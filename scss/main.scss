@@ -109,13 +109,14 @@ header {
 // About
 
 #about {
-    width: 100%;
+    width: 100%;    
     // display: grid;
     grid-gap: 20px;
     grid-template-areas:
         'aboutImage aboutSection aboutSection';
     grid-template-columns: repeat(3, 1fr);
     overflow-x: hidden;
+    min-height: calc(100vh - 60px - 5vh);
 
     .page-heading-small {
         visibility: hidden;
@@ -129,13 +130,13 @@ header {
         background: $about-image;
         background-size: cover;
         background-repeat: no-repeat;
-        height: 135vh;
+        height: 100%;
     }
 
     .about-section {
         grid-area: aboutSection;
         margin-top: 8vh;
-        min-height: 135vh;
+        max-height: 135vh;
 
         p {
             padding: 2rem 5rem 1rem 1rem;

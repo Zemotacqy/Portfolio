@@ -29,6 +29,7 @@ $difference: 1vh;
         background-attachment: fixed;
         background-size: cover;
         background-repeat: no-repeat;
+        overflow: hidden;
 
         .overlay {
             position: absolute;
@@ -38,6 +39,81 @@ $difference: 1vh;
             height: 100%;
             background: rgba($black, $background-opacity);
             z-index: -1; 
+        }
+    }
+}
+
+@mixin AboutResponsive {
+    #about {
+        width: 100%;
+        display: grid;
+        grid-gap: 10px;
+        grid-template-areas: 
+        'aboutImage'
+        'aboutSection'
+        'aboutSection';
+        grid-template-columns: 1fr;
+        overflow-x: hidden;
+
+        .page-heading {
+            visibility: hidden; 
+        }
+
+        .page-heading-small {
+            text-align: center;
+            z-index: 1;
+            visibility: visible;
+            position: relative;
+            margin-right: -50%;
+            left: 50%;
+            transform: translate(-50%, 0);
+        
+            .heading-text-small {
+                font-size: 4rem;
+                text-decoration: none;
+                position: relative;
+                color: #000;
+                font-weight: 400;
+            }
+        
+            .heading-text-small::after {
+                content: '';
+                width: 0%;
+                height: 7px;
+                background-color: lighten($dark-blue, 30);
+                position: absolute;
+                bottom: 0%;left: 50%;
+                border-radius: 10px;
+                transition: all 500ms ease;
+            }
+        
+            .heading-text-small:hover::after {
+                left: 0%;
+                width: 100%;
+            }
+        }
+
+        .about-img {
+            grid-area: aboutImage;
+            position: relative;
+            top: 0;
+            left: 0;
+            background: url('../img/about-image-small.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 35vh;
+        }
+    
+        .about-section {
+            grid-area: aboutSection;
+            margin-top: 5vh;
+            min-height: 100vh;
+    
+            p {
+                padding: 1rem 2rem 1rem 2rem;
+                text-align: justify;
+                font-size: 1.3rem;
+            }
         }
     }
 }
