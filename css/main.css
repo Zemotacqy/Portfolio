@@ -209,7 +209,8 @@ header {
   grid-template-areas: 'aboutImage aboutSection aboutSection';
   grid-template-columns: repeat(3, 1fr);
   overflow-x: hidden;
-  min-height: calc(100vh - 60px - 5vh); }
+  min-height: calc(100vh - 60px - 5vh);
+  overflow: -moz-scrollbars-none; }
   #about .page-heading-small {
     visibility: hidden; }
   #about .about-img {
@@ -229,6 +230,9 @@ header {
       padding: 2rem 5rem 1rem 1rem;
       text-align: justify;
       font-size: 1.3rem; }
+
+#about::-webkit-scrollbar {
+  width: 0 !important; }
 
 #work {
   width: 100%;
