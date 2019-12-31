@@ -8,7 +8,7 @@ var content = new static.Server('./dist', { cache: 3600 });
 
 function WriteToLog(path, address) {
     var timestamp = new Date().toUTCString();
-    var data = timestamp + "\t" + path + "\t" + address + "\n";
+    var data = timestamp + "\t" + path + "\t\t\t" + address + "\n";
     fs.appendFileSync(logFilePath, data);
 }
 
