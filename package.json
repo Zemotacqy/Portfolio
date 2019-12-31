@@ -7,6 +7,7 @@
     "sass": "node-sass -w scss/ -o dist/css/ --recursive",
     "deploy:github": "gh-pages -d dist/",
     "deploy:prod": "pm2 start server.js",
+    "server:down": "pm2 stop server.js",
     "clean": "rm -f log"
   },
   "repository": {
