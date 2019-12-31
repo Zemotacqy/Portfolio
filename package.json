@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "sass": "node-sass -w scss/ -o dist/css/ --recursive",
-    "deploy": "gh-pages -d dist/"
+    "deploy:github": "gh-pages -d dist/",
+    "deploy:prod": "node-sass scss/ -o dist/css/ --recursive && pm2 start server.js",
+    "clean": "rm -f log"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "gh-pages": "^2.1.1",
-    "node-sass": "^4.13.0"
+    "node-sass": "^4.13.0",
+    "node-static": "^0.7.11"
   }
 }
