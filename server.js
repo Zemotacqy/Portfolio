@@ -2,7 +2,7 @@ var static = require('node-static');
 var http = require('http');
 var fs = require('fs');
 
-var PORT = 80;
+var PORT = 9801;
 var logFilePath = './log';
 var content = new static.Server('./dist', { cache: 3600 });
 
