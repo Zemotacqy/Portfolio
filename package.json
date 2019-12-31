@@ -1,15 +1,19 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "This is the Portfolio website of Manish Ranjan.",
+  "main": "server.js",
   "scripts": {
     "sass": "node-sass -w scss/ -o dist/css/ --recursive",
     "deploy:github": "gh-pages -d dist/",
-    "deploy:prod": "node-sass scss/ -o dist/css/ --recursive && pm2 start server.js",
+    "deploy:prod": "pm2 start server.js",
     "clean": "rm -f log"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zemotacqy/Portfolio.git"
+  },
+  "author": "Manish Ranjan(Zemotacqy)",
   "license": "ISC",
   "dependencies": {
     "gh-pages": "^2.1.1",
