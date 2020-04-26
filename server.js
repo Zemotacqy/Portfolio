@@ -15,9 +15,9 @@ function WriteToLog(path, address) {
 http.createServer((req, res) => {
     
     req.addListener('end', () => {
-        content.serve(req, res, (e, res) => {
+        content.serve(req, res, (e, response) => {
             if(e && (e.status==404)) {
-                content.serveFile('./404.html', 404, {}, req, res);
+                content.serveFile('/404.html', 404, {}, req, res);
             }
             WriteToLog(req.url, req.connection.remoteAddress);
         });
