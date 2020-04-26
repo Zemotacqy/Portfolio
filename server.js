@@ -1,6 +1,7 @@
 var static = require('node-static');
 var http = require('http');
 var fs = require('fs');
+var path = require('path');
 
 var PORT = 9801;
 var logFilePath = './log';
@@ -12,17 +13,22 @@ function WriteToLog(path, address) {
     fs.appendFileSync(logFilePath, data);
 }
 
-http.createServer((req, res) => {
-    
-    req.addListener('end', () => {
-        content.serve(req, res, (e, response) => {
-            if(e && (e.status==404)) {
-                content.serveFile('/404.html', 404, {}, req, res);
-            }
-            WriteToLog(req.url, req.connection.remoteAddress);
+http.createServer((req, res) => {   
+    fs.readdir(path.join(__dirname, "dist"), (err, files) => {
+        if(err) return;
+        files = files.filter(file => {
+            if(['.html', '.ico'].indexOf(path.extname(file)) != -1) return file;
         });
-    }).resume();
-
+        if(files.indexOf(`${req.url.split('/').pop()}.html`) != -1) req.url = req.url + '.html';
+        req.addListener('end', () => {
+            content.serve(req, res, (e, response) => {
+                if(e && (e.status==404)) {
+                    content.serveFile('/404.html', 404, {}, req, res);
+                }
+                WriteToLog(req.url, req.connection.remoteAddress);
+            });
+        }).resume();
+    });
 }).listen(PORT, ()=>{
     console.log(`Server running on port ${PORT}.`);
     WriteToLog("", `Server running on port ${PORT}.`);
