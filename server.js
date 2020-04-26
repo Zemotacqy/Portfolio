@@ -17,7 +17,7 @@ http.createServer((req, res) => {
     req.addListener('end', () => {
         content.serve(req, res, (e, res) => {
             if(e && (e.status==404)) {
-                content.serveFile('./dist/404.html', 404, {}, req, res);
+                content.serveFile('./404.html', 404, {}, req, res);
             }
             WriteToLog(req.url, req.connection.remoteAddress);
         });
