@@ -108,6 +108,26 @@
 .nav-item:nth-child(5) {
   transition-delay: 0.5s; }
 
+.light-bg {
+  background-color: #fff;
+  padding: 0 0.5rem;
+  color: #000; }
+
+.dark-bg {
+  background-color: #232323;
+  padding: 0 0.5rem;
+  color: #FFF;
+  overflow-x: scroll; }
+
+.post-table table, .post-table th, .post-table td {
+  border: 1px solid black;
+  border-collapse: collapse; }
+  .post-table table th, .post-table table td, .post-table th th, .post-table th td, .post-table td th, .post-table td td {
+    text-align: center; }
+
+.post-table table {
+  width: 100%; }
+
 * {
   box-sizing: border-box; }
 
@@ -343,6 +363,9 @@ header {
         max-width: 75%;
         text-decoration: underline;
         text-underline-position: under; }
+        #blog .index .entry .what a {
+          text-decoration: underline;
+          color: inherit; }
       #blog .index .entry .what:hover {
         opacity: 0.8;
         cursor: pointer;

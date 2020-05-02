@@ -1,0 +1,27 @@
+.light-bg {
+    background-color: $light-bg-post;
+    padding: 0 0.5rem;
+    color: #000;
+}
+
+.dark-bg {
+    background-color: $dark-bg-post;
+    padding: 0 0.5rem;
+    color: #FFF;
+    overflow-x: scroll;
+}
+
+.post-table {
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    
+        th, td {
+            text-align: center;
+        }
+    }
+    
+    table {
+        width: 100%;
+    }
+}

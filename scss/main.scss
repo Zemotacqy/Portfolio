@@ -1,5 +1,6 @@
 @import 'config';
 @import 'menu';
+@import 'post';
 
 * {
     box-sizing: border-box;
@@ -306,6 +307,11 @@ header {
                 max-width: 75%;
                 text-decoration: underline;
                 text-underline-position: under;
+
+                a {
+                    text-decoration: underline;
+                    color: inherit;
+                }
             }
 
             .what:hover {

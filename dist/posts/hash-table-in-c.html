@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+    <title>Manish Ranjan | Portfolio</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+    <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="overlay"></div>
+    <header>
+        <div class="menu-btn">
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+        </div>
+
+        <nav class="menu">
+            <div class="menu-branding">
+                <div class="potrait"></div>
+            </div>
+
+            <ul class="menu-nav">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../about" class="nav-link">About me</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../work" class="nav-link">Work</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../blog" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item icons">
+                    <a href="https://www.facebook.com/manish.ranjan.773124" target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
+                    <a href="https://www.linkedin.com/in/mranjan1398" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                    <a href="https://github.com/Zemotacqy" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+                    <a href="mailto:mranjan1398@gmail.com" target="_blank"><i class="fas fa-envelope fa-2x"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="blog-post">
+
+        <div class="post-container">
+
+            <span class="back-btn"><i class="fas fa-long-arrow-alt-left"></i>&nbsp;<a href="../blog">Index</a></span>
+
+            <h1 class="post-title">Hash Table in C</h1>
+
+            <div class="post-date">02 May 2020</div>
+
+            <p class="post-content">
+        
+<p>Hash Tables are the most revered data structures for us programmers. Afterall, it contains all the desired qualities of an ideal data structure. Let's analyze the time complexities:</p>
+
+<ul>
+    <li>Insertion O(1) Average Case</li>
+
+    <li>Searching O(1) Average Case</li>
+</ul>
+
+<p>So why do we study Trees, Graphs, Arrays, Strings. Because all that glitters is not gold. Hash Tables may seem tempting at first but have problems of their own. This writeup deals with a detailed analysis of Hash Tables. We do so by implementing a Hash Table of our own, in a language which has its own set of complex concepts - C. Let's get started.</p>
+
+<h2 id="hashtablesintroduction">Hash Tables - Introduction</h2>
+
+<p>Hash Tables is container based data structure. Its main components are Index Table, Hash Function, Key Value Pairs and Linked List. The most basic use case of a Hash Table is: Given a key value pair, it can easily be inserted into the hash table and when it comes to fetching a particular element corresponding to a particular key, it can do so in an average of O(1) time complexity.</p>
+
+<p><img src="../img/posts/hash-table-in-c/hashtable.png" alt="Hash Table" /></p>
+
+<p>We provide a key, value pair to be inserted to the Hash Table. This key is passed through a hash function which maps it to a particular index in the Index Table. It may be possible that multiple keys map to the same index. So, We need a way to store all these elements corresponding to that particular index. Here, Linked List comes into picture. Without the need of <em>contiguous memory allocation</em>, it chains together various elements in the form of a Linked List. </p>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>For a hash table to store data elements in a fashion such that it facilitates O(1) operations, we need to keep a few things in mind.</p>
+
+<ul>
+<li>The Keys must be non repeating. Corresponding to a key, we could store a single value. <em>many to one mapping</em>.</li>
+
+<li>The keys must follow a random distributed order. Keys which follow a certain pattern tend to map to certain index under particular hash functions. For example: We have keys: <code class="light-bg">a1, a2, a3...</code> and the hash function treats the last character as the index. In such cases, <code class="light-bg">b1 -&gt; a1</code>, <code class="light-bg">a2 -&gt; b2</code> and so on and so forth.</li>
+
+<li>Hash function must satisfy the following three conditions:
+
+
+<ul>
+<li>For a given key, it must map to a single index. It should only give one absolute constant index, whether I go through the function 1 time or a 1000 times. It must remain stateless, i.e. not be dependent on previous states for it computation.</li>
+
+<li>The time complexity for computing the index must be constant, otherwise it would defeat the purpose of constant time fetching in a hash table. However, one may argue that hash function may have to iterate over a whole key inorder to compute the index, so is it a bad hash function? Actually not, here, the order is determined by the number of keys one wishes to insert and not the key length. Inorder to facilitate, random key distribution, a good(not ideal) hash function must iterate over the whole key length. Moreover, if you are planning to insert a key of length 10^9, then there is something seriously wrong with your logic, mate ;)</li>
+
+<li>Random Distribution over range. It means that, our function should not map different keys to particular sets of values again and again, while leaving out the rest. In the example given below, our function always maps to index 5 whatever be the input, even though the permissable range is over 100, in such cases, we are not utilising indices from <code class="light-bg">0-4</code> and <code class="light-bg">6-99</code>.
+<pre class="dark-bg"><code class="c language-c">int HashFunction(int key) {
+return 5; // Assuming 5 lies within the index range.
+}
+</code></pre>
+</li>
+</ul>
+</li>
+
+<li>Index Table size is a major factor determining the efficiency of a hash table. It should not be too small(say 10) or it would choke the index table with huge chains of Nodes containing different values resulting in high fetching time. Neither should an index table be of extraordinarily large size(and small number of keys) or it would be just like a sparse matrix with empty indices, occupying tons of free space. So what is the solution, we will discuss this in detail in later sections. (HINT: What can a low level language like C provide us?)</li>
+</ul>
+
+<h2 id="designofahashtable">Design of a Hash Table</h2>
+
+<p>For the purpose of this writeup, we are going to consider a basic Hash Table. Following are the assumptions:</p>
+
+<ul>
+<li>The Maximum permissable length of Index table is limited by maximum available contiguous block of memory(Why? To facilitate O(1) access time during random access). However, this is not neccessary. We can have this table in the form of linked memory blocks, which comes with its own set of complexities which we are not going to discuss here.</li>
+
+<li>We are going to see chaining of nodes in a linear fashion. This can easily be modified if one wishes to tinker the code.</li>
+
+<li>We are assuming that the entry in Index Table points to a Linked List. However, we can store any data structure in here, like AVL trees, Doubly Linked List.</li>
+</ul>
+
+<h3 id="abasicflow">A Basic Flow</h3>
+
+<p>Suppose we want to enter a key value pair in our hash table:</p>
+
+<ul>
+<li>key: zemotacqy</li>
+
+<li>value: Alias</li>
+</ul>
+
+<p><img src="../img/posts/hash-table-in-c/hashtable_basic_flow.png" alt="Basic Flow" /></p>
+
+<p>A very basic Hash Function:</p>
+
+<pre class="dark-bg"><code class="c language-c">uint32_t HashFunction(char* key, uint32_t key_size) {
+    uint32_t sum = 0;
+    for(uint32_t i=0; i&lt;key_size; i++) {
+        sum = (sum + (uint32_t)key[i]) % INDEX_TABLE_SIZE;
+    }
+    return sum;
+} 
+</code></pre>
+
+<p>After passing <code class="light-bg">HashFunction("zemotacqy", 8)</code> the value returned is 9.
+This indicates, Our hash table will store the key-value pair in the 9th Linked List. And the heads of all our Linked Lists are stored in index Table. That is the reason, why this data structure is most important. Failure to point to an index in Index Table will drastically increase the time complexity of searching and insertion operations.</p>
+
+<p>So, now we have the index in which we need to push our value into. We prepare a node which contains both key as well as value and push it to the beginning of the Linked List(Why beginning? you can insert it anywhere in the linked list, after all we will be using linear searching in this linked list, so it doesn't matter). </p>
+
+<blockquote>
+  <i>Why push both key as well as value in the linked list? Recall that agreed upon <em>many to one mapping</em>. We can insert two keys(suppose zemotacqy and shinchan) which map to the same value - Alias. So while we are searching for the key in our linked list, we would require key so as to match if what we are searching for has the same key as well as value. Well, that's the result, you gotta store it somewhere.</i>
+</blockquote>
+
+<p>Pretty neat? Let's get our hands dirty with some code :\</p>
+
+<h2 id="implementinghashtableinc">Implementing Hash Table in C</h2>
+
+<p>Earlier, I had planned on restricting the data types to only <code>char*</code> and <code>int</code>. I then converted the whole code into type generic data structures. This provides more flexibility as in we can now store <code class="light-bg">&lt;char*, char*&gt;</code> or <code class="light-bg">&lt;int, char&gt;</code> or <code class="light-bg">&lt;char**, char&gt;</code>. This comes with an overhead of void pointers, while using this particular data strucutre as a library.</p>
+
+<p><strong>For those bravehearts who wish to proceed further, void pointers welcome you all !!</strong></p>
+
+<p>Directory Structure</p>
+
+<pre><code>├── hashtable.c
+├── hashtable.h
+├── program.c (Our Driver Program)
+├── utils.c
+└── utils.h
+</code></pre>
+
+<p><strong>Parameterization</strong>: For the purpose of this writeup we are focussing on some performance parameters:</p>
+
+<ul>
+<li>Ratio of No. of Collision and Total Number of Nodes.</li>
+
+<li>Fetch time, averaged over a constant number of Sampling Retries.</li>
+
+<li>Size of Index Table.</li>
+</ul>
+
+<p>Let's quickly define some structs(C doesn't have classes :P):</p>
+
+<script src="https://gist.github.com/Zemotacqy/c4c7dd2b05965252652de821c55ebe17.js"></script>
+
+<p>Before going into the crux, lets take a look at the driver function.</p>
+
+<script src="https://gist.github.com/Zemotacqy/06ac7846b99f8e271ae1d06cae1aa902.js"></script>
+
+<p>Type generic code results in some ugly piece of code, like using void* and size of block.</p>
+
+<p><strong>A quick aside on void*</strong>: In high level programming languages we just need to specify the variable and not the type. Under the hood these all are converted to a common baseline abstract data type and passed further. In C, when we specify <code class="light-bg">int* x = 7;</code>, we tell the compiler hey, x is a pointer to integer(<code class="light-bg">[0x00100] -&gt; 7</code>) which occupies 4 bytes.</p>
+
+<pre class="light-bg"><code class="c language-c">0x001000 0x001001 0x001002 0x001003
+
+00000000 00000000 00000000 00000111</code></pre>
+
+<p>This is how it is stored in memory. But void* is the common baseline abstract data type, which has no information about how many blocks this variable occupies. So we always need to specify the starting address of the block and the number of bytes it should read without entering illegal memory space.</p>
+
+<p>The whole driver function is divided into 3 parts:</p>
+
+<ul>
+<li>Intialise the hash table and insert key value pairs to it.</li>
+
+<li>For a fixed number of times(SamplingRetries), find the fetch time for a particular key.</li>
+
+<li>Show the Aggregated results at the end.</li>
+</ul>
+
+<p>Here's the Hash Function:</p>
+
+<pre class="dark-bg"><code class="c language-c">uint32_t HashFunction(HashTable* _hashtable, Key* key) {
+    uint64_t sum = 0;
+    const uint32_t R = 13;
+
+    for(uint32_t i=0; i &lt; key-&gt;size; i++) {
+        sum = ( R * sum + (uint32_t)(*(char*)&amp;key-&gt;data[i]) ) % MAX_INDEX_TABLE_SIZE;
+    }
+
+    return (sum % MAX_INDEX_TABLE_SIZE);
+}
+</code></pre>
+
+<p>As we can see, there is <code class="light-bg">R</code> which is a <em>small</em> prime number. This number adds more randomness to the hash function. </p>
+
+<p>Here's the Hash Table public methods:</p>
+
+<script src="https://gist.github.com/Zemotacqy/6ca402896051b40b95efe19f27146e83.js"></script>
+
+<p>Let's take a quick look at the results at this stage:</p>
+
+<p>Fixed Initial Index Table Size = 1000, Note that, for the purpose of this table I have commented the <code>growTable</code> logic(explained later). </p>
+<div class="post-table">
+<table>
+    <thead>
+    <tr>
+        <th>No. of Nodes/Insertions</th>
+        <th>Average Fetch Time (in ns)</th>
+        <th>Collision(%)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>100</td>
+        <td>1.20</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>500</td>
+        <td>2.90</td>
+        <td>21.6</td>
+    </tr>
+    <tr>
+        <td>1000</td>
+        <td>4.20</td>
+        <td>36.4</td>
+    </tr>
+    <tr>
+        <td>10000</td>
+        <td>5.64</td>
+        <td>90</td>
+    </tr>
+    <tr>
+        <td>100000</td>
+        <td>7.10</td>
+        <td>99</td>
+    </tr>
+    </tbody>
+</table>    
+</div>
+<p>These figures are obtained on Linux (Ubuntu 18.04), however, the fetch time kept fluctuating, I have tried to keep it as close to theortical results as possible.</p>
+
+<p>Following are the conclusions based upon the figures:</p>
+
+<ul>
+<li>As number of nodes/insertions increase, both collision and average fetch time increase.</li>
+
+<li>The drastic increase in collision% did not result in equal rise in fetch time. Can we explain this?</li>
+
+<li>What made the collision% to be low and then increase drastically after 1000 nodes. Is it coincidence this number is equal to intial index table size?</li>
+</ul>
+
+<p>As theoritical computer science provides answer to our first observation, as we increase number of nodes, more and more number of keys get mapped to same index, clogging the Index Table Linked Lists with more and more nodes.</p>
+
+<p>As for the second observation, we can offer a satisfying exaplanation. The role of index table basically reduces the search space to only those key value pairs whose keys get mapped to same index on Index Table. This, this increase in fetch time is much slower than increase in collision% as it takes into consideration all the key-value pairs present on the hash table.</p>
+
+<p>The third observation is a matter of grave concern and will pave the way for further improvements. In our hash table we had fixed the index table size(1000). Now, suppose an ideal random distribution occurs in the first 1000 insertions and all the 1000 distinct indices gets used. But, as we increase the number of nodes, there are bound to be many many collisions as there are no more free indices present on index table. So if we increase the number of nodes 10 times, practically collision increases 9(10-1) times. Hence the sudden rise in collision%. </p>
+
+<p><strong>How can we improve this?</strong></p>
+
+<p>What would happen if we wish to store 10^10 key value pairs? Is it possible? Or will it be limited by RAM capacity? Or is it dependent upon swap space? How will fetch time be affected? Or insertion would slow down?</p>
+
+<p>The assumption we are taking about fixed size of Index table seems to restrict us. We can use dynamic memory allocation to grow our hash table when collisions increase above a certain threshold. But from where we will get this extra memory? Are we still going to use contiguous block of memory for our index table? What if the required size of Index table cannot find a contiguous block of memory to fit in?</p>
+
+<p>Then comes hardware restrictions. Suppose we have 4 GB RAM on our system, of which 1.5GB is accessible and available for the program. In such a case, our program will try to consume the 1.5 GB of free memory, if it exceeds this limit, virtual memory would help. It would try to create the illusion of extra memory space(where there is actually not), and would start storing hash tables in virtual memory space. This would essentially slow the program drastically. Your IO buses will be clogged with Nodes and processor will have no choice but to wait for IO buses response. And slowly almost all your available system's resources will be invested in this program. </p>
+
+<p>So what is the maximum permissable Index Table size? One should grow the HashTable only upto a limit uptill all of available RAM is consumed. How can we implement this?</p>
+
+<p><strong>Logic</strong> You can create your own <code class="light-bg">toGrow()</code> function which will define custom conditions when you want to grow your hash table. After multiple hit and trial, I have come to the conclusion that when number of nodes exceed the size of Index Table size, its good time to grow our Hash Table.</p>
+
+<pre class="dark-bg"><code class="c language-c">bool toGrow(HashTable* _hashtable) {
+    if( _hashtable-&gt;canGrow &amp;&amp; (float)_hashtable-&gt;numberOfNodes/MAX_INDEX_TABLE_SIZE &gt;= 1) return true;
+    else return false;
+}
+</code></pre>
+
+<p>By what size? Double seems fine ;)</p>
+
+<script src="https://gist.github.com/Zemotacqy/284f54614548efcd851470d76eca5e04.js"></script>
+
+<p>Recall that realloc copies the table from old memory location to a new location where it has sufficient memory and returns this new pointer.</p>
+
+<p>One last problem to tackle: If your Hash Function is dependent upon Index Table Size(which it does in most cases), when you grow the index table, there may be a case when you want to access an element would map to a different index(because Hash Function has changed), leading to failure in fetching the element. So one must re-index the existing key value pairs before accessing hash table to fetch more keys.</p>
+
+<script src="https://gist.github.com/Zemotacqy/667de8118c355705366d6ff3bb26946f.js"></script>
+
+<p>Let's look at the results:
+Initial Index Table Size = 1000.</p>
+<div class="post-table">
+<table>
+    <thead>
+    <tr>
+        <th>No. of Nodes/Insertions</th>
+        <th>Average Fetch Time (in ns)</th>
+        <th>Collision(%)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td >100</td>
+        <td >1.30</td>
+        <td >1</td>
+    </tr>
+    <tr>
+        <td >500</td>
+        <td >1.4</td>
+        <td >21.6</td>
+    </tr>
+    <tr>
+        <td >1000</td>
+        <td >1.5</td>
+        <td >36.4</td>
+    </tr>
+    <tr>
+        <td >10000</td>
+        <td >1.70</td>
+        <td >24.83</td>
+    </tr>
+    <tr>
+        <td >100000</td>
+        <td >1.90</td>
+        <td >30.62</td>
+    </tr>
+    </tbody>
+</table>    
+</div>
+<p>Note that the collision% has drastically reduced now. After multiple trials, I have concluded that this % remains well within 40%.</p>
+
+<p>Hash Tables are amazing data structures, one must use them carefully and fully understand the time-memory tradeoff. </p>
+
+<p>That's it folks. You can find this code on <a href="https://github.com/Zemotacqy/HashTable-In-C" target="_blank">GitHub</a>.
+Hope this helps.</p>
+
+            </p>
+
+            <hr class="line-seperator" />
+
+
+        </div>
+    </section>
+
+    <footer class="main-footer force-bottom">
+        Copyright &copy; 2019
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <script>
+        // Preloader
+        $(window).load(function() {
+            $(".loader").fadeOut("slow");
+            $(".loader").css("display", "none");
+                    
+            $(".overlay").css("display", "block");
+            $("section").css("display", "block");
+            $("header").css("display", "block");
+            $("footer").css("display", "block");
+        });
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
