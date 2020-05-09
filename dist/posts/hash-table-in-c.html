@@ -89,7 +89,7 @@
 <p>For a hash table to store data elements in a fashion such that it facilitates O(1) operations, we need to keep a few things in mind.</p>
 
 <ul>
-<li>The Keys must be non repeating. Corresponding to a key, we could store a single value. <em>many to one mapping</em>.</li>
+<li>The Keys must be non repeating. Corresponding to a key, we could store a single value, but multiple keys can have same values. So many to <em>many to one mapping</em>.</li>
 
 <li>The keys must follow a random distributed order. Keys which follow a certain pattern tend to map to certain index under particular hash functions. For example: We have keys: <code class="light-bg">a1, a2, a3...</code> and the hash function treats the last character as the index. In such cases, <code class="light-bg">b1 -&gt; a1</code>, <code class="light-bg">a2 -&gt; b2</code> and so on and so forth.</li>
 
@@ -154,7 +154,7 @@ This indicates, Our hash table will store the key-value pair in the 9th Linked L
 <p>So, now we have the index in which we need to push our value into. We prepare a node which contains both key as well as value and push it to the beginning of the Linked List(Why beginning? you can insert it anywhere in the linked list, after all we will be using linear searching in this linked list, so it doesn't matter). </p>
 
 <blockquote>
-  <i>Why push both key as well as value in the linked list? Recall that agreed upon <em>many to one mapping</em>. We can insert two keys(suppose zemotacqy and shinchan) which map to the same value - Alias. So while we are searching for the key in our linked list, we would require key so as to match if what we are searching for has the same key as well as value. Well, that's the result, you gotta store it somewhere.</i>
+  <i>Why push both key as well as value in the linked list? We can insert two keys(suppose zemotacqy and shinchan) which map to the same value - Alias. So while we are searching for the key in our linked list, we would require key so as to match if what we are searching for has the same key as well as value. Well, that's the result, you gotta store it somewhere.</i>
 </blockquote>
 
 <p>Pretty neat? Let's get our hands dirty with some code :\</p>
@@ -222,7 +222,7 @@ This indicates, Our hash table will store the key-value pair in the 9th Linked L
         sum = ( R * sum + (uint32_t)(*(char*)&amp;key-&gt;data[i]) ) % MAX_INDEX_TABLE_SIZE;
     }
 
-    return (sum % MAX_INDEX_TABLE_SIZE);
+    return sum;
 }
 </code></pre>
 
@@ -287,7 +287,7 @@ This indicates, Our hash table will store the key-value pair in the 9th Linked L
 
 <p>As theoritical computer science provides answer to our first observation, as we increase number of nodes, more and more number of keys get mapped to same index, clogging the Index Table Linked Lists with more and more nodes.</p>
 
-<p>As for the second observation, we can offer a satisfying exaplanation. The role of index table basically reduces the search space to only those key value pairs whose keys get mapped to same index on Index Table. This, this increase in fetch time is much slower than increase in collision% as it takes into consideration all the key-value pairs present on the hash table.</p>
+<p>As for the second observation, we can offer a satisfying exaplanation. The role of index table basically reduces the search space to only those key value pairs whose keys get mapped to same index on Index Table. This, increase in fetch time is much slower than increase in collision% as it takes into consideration all the key-value pairs present on the hash table.</p>
 
 <p>The third observation is a matter of grave concern and will pave the way for further improvements. In our hash table we had fixed the index table size(1000). Now, suppose an ideal random distribution occurs in the first 1000 insertions and all the 1000 distinct indices gets used. But, as we increase the number of nodes, there are bound to be many many collisions as there are no more free indices present on index table. So if we increase the number of nodes 10 times, practically collision increases 9(10-1) times. Hence the sudden rise in collision%. </p>
 
